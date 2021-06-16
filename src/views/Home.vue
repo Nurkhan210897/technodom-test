@@ -10,21 +10,18 @@
         <th>website</th>
         <th></th>
       </tr>
-      <table-list/>
+      <table-row/>
     </table>
   </div>
 </template>
 
 <script>
-import tableList from "@/components/tableList";
+import tableRow from "@/components/tableRow";
 
 export default {
   name: "Home",
 
-  data: () => ({
-  }),
-
-  components: { tableList },
+  components: { tableRow },
 };
 </script>
 
