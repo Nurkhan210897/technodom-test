@@ -14,7 +14,7 @@ const routes = [{
         name: 'users',
         props: true,
         component: () =>
-            import ('../views/UserInfo.vue')
+            import ('../views/UsersInfo.vue')
     },
 
 ]

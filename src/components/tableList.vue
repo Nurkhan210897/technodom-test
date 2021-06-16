@@ -1,6 +1,6 @@
 <template>
   <tbody class="t-body">
-    <tr v-for="(user, index) in userInfo" :key="user.id">
+    <tr v-for="(user, index) in users" :key="user.id">
       <td>
         <input
           type="checkbox"
@@ -18,16 +18,17 @@
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.website }}</td>
-      <td @click="deleteTable(index)" class="deleteTable">x</td>
+      <td @click="deleteRow(index)" class="deleteTable">x</td>
     </tr>
   </tbody>
 </template>
 
 <script>
+
 export default {
   data: () => ({
     activeUsers: [1],
-    userInfo: null,
+    users: null,
     disabled: false,
   }),
   computed: {
@@ -42,14 +43,14 @@ export default {
     },
   },
   methods: {
-    deleteTable(index) {
-      this.userInfo.splice(index, 1);
+    deleteRow(index) {
+      this.users.splice(index, 1);
     },
   },
-  mounted() {
+  created() {
     this.$axios
       .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => (this.userInfo = response.data));
+      .then((response) => (this.users = response.data));
   },
 };
 </script>
@@ -58,11 +59,11 @@ export default {
 .disabled {
   pointer-events: none;
 }
-.t-body{
-  td{
+.t-body {
+  td {
     padding: 10px 25px;
   }
-  .deleteTable{
+  .deleteTable {
     cursor: pointer;
     font-size: 25px;
   }
